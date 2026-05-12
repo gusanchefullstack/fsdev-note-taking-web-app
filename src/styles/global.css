@@ -109,6 +109,28 @@ h1, h2, h3, h4, h5, h6 {
   line-height: var(--lh-tight);
 }
 
+/* ── Skip navigation ────────────────────────────────────── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--sp-4);
+  z-index: 9999;
+  padding: var(--sp-2) var(--sp-4);
+  background: var(--clr-btn-primary-bg);
+  color: var(--clr-btn-primary-text);
+  border-radius: var(--radius-md);
+  font-size: var(--text-base);
+  font-weight: var(--fw-semibold);
+  text-decoration: none;
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: var(--sp-4);
+  outline: 2px solid var(--clr-border-focus);
+  outline-offset: 2px;
+}
+
 /* ── Focus visible ──────────────────────────────────────── */
 :focus-visible {
   outline: 2px solid var(--clr-border-focus);

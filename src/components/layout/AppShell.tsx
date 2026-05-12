@@ -16,6 +16,7 @@ interface AppShellProps {
   searchQuery: string;
   onSearchChange: (q: string) => void;
   onSettingsClick: () => void;
+  resultsCount?: number;
 }
 
 export function AppShell({
@@ -30,12 +31,20 @@ export function AppShell({
   searchQuery,
   onSearchChange,
   onSettingsClick,
+  resultsCount,
 }: AppShellProps) {
   return (
     <div className={styles.shell} data-mobile-view={mobileView}>
       <aside className={styles.sidebar}>{sidebar}</aside>
 
-      <main className={styles.main}>
+      {/* Live region: announces search result counts to screen readers */}
+      <div aria-live="polite" aria-atomic="true" className={styles.srOnly}>
+        {searchQuery.trim() && resultsCount !== undefined
+          ? `${resultsCount} note${resultsCount === 1 ? '' : 's'} found`
+          : ''}
+      </div>
+
+      <main id="main-content" className={styles.main}>
         <header className={styles.contentHeader}>
           <h1 className={styles.viewTitle}>{viewTitle}</h1>
           {!showSettings && (

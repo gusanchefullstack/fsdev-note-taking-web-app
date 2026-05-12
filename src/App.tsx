@@ -174,6 +174,7 @@ function NotesApp() {
       showSettings={showSettings}
       settingsPanel={<SettingsPanel />}
       mobileView={mobileView}
+      resultsCount={filteredNotes.length}
       onSettingsClick={() => setShowSettings((v) => !v)}
       sidebar={
         <Sidebar

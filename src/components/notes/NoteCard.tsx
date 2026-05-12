@@ -1,3 +1,4 @@
+import type { KeyboardEvent } from 'react';
 import type { Note } from '../../types';
 import { Tag } from '../ui/Tag';
 import styles from './NoteCard.module.css';
@@ -6,6 +7,7 @@ interface NoteCardProps {
   note: Note;
   isSelected: boolean;
   onClick: () => void;
+  onKeyDown?: (e: KeyboardEvent<HTMLOListElement>) => void;
 }
 
 function formatDate(iso: string): string {
@@ -16,15 +18,17 @@ function formatDate(iso: string): string {
   });
 }
 
-export function NoteCard({ note, isSelected, onClick }: NoteCardProps) {
+export function NoteCard({ note, isSelected, onClick, onKeyDown }: NoteCardProps) {
   return (
     <article>
       <button
         type="button"
+        data-note-btn
         className={`${styles.card} ${isSelected ? styles.cardSelected : ''}`}
         onClick={onClick}
+        onKeyDown={onKeyDown as never}
         aria-pressed={isSelected}
-        aria-label={`Note: ${note.title}`}
+        aria-label={`Note: ${note.title || 'Untitled Note'}`}
       >
         <span className={styles.title}>{note.title || 'Untitled Note'}</span>
 
