@@ -74,6 +74,13 @@
   padding: 0 var(--sp-3);
 }
 
+.navLabel {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .tagsHeading {
   display: flex;
   align-items: center;
@@ -94,4 +101,85 @@
 
 .logoutArea {
   padding: 0 var(--sp-3) var(--sp-3);
+}
+
+/* ── Tablet icon-only sidebar (≤ 1024px) ─────────────────── */
+@media (max-width: 1024px) {
+  .sidebar {
+    align-items: center;
+    padding: var(--sp-4) 0;
+  }
+
+  .logoLink {
+    padding: var(--sp-2);
+    justify-content: center;
+  }
+
+  .logo {
+    height: 24px;
+  }
+
+  .nav,
+  .tagsSection {
+    padding: 0 var(--sp-2);
+    width: 100%;
+  }
+
+  .navItem {
+    justify-content: center;
+    padding: var(--sp-2);
+  }
+
+  /* Hide text labels, chevron icons, and chevrons */
+  .navLabel,
+  .navChevron {
+    display: none;
+  }
+
+  .tagsHeading {
+    justify-content: center;
+    padding: var(--sp-2);
+  }
+
+  .tagsHeading .navLabel {
+    display: none;
+  }
+
+  .logoutArea {
+    padding: 0 var(--sp-2) var(--sp-3);
+    width: 100%;
+  }
+}
+
+/* ── Mobile bottom nav (≤ 640px) ─────────────────────────── */
+@media (max-width: 640px) {
+  .sidebar {
+    flex-direction: row;
+    padding: 0 var(--sp-4);
+    height: 100%;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .logoLink {
+    display: none;
+  }
+
+  .nav {
+    flex-direction: row;
+    padding: 0;
+    gap: var(--sp-1);
+  }
+
+  .divider {
+    display: none;
+  }
+
+  .tagsSection {
+    display: none;
+  }
+
+  .logoutArea {
+    padding: 0;
+  }
 }

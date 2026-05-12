@@ -3,6 +3,7 @@ import { Button } from '../ui/Button';
 import { NoteMetaBar } from '../notes/NoteMetaBar';
 import { NoteViewer } from '../notes/NoteViewer';
 import { NoteEditor } from '../notes/NoteEditor';
+import { NoteActions } from '../notes/NoteActions';
 import styles from './NoteDetail.module.css';
 
 interface NoteDetailProps {
@@ -14,6 +15,10 @@ interface NoteDetailProps {
   onCancel: () => void;
   onDraftChange: (draft: EditDraft) => void;
   onTagClick: (tag: string) => void;
+  /* tablet/mobile: inline actions */
+  onArchive?: () => void;
+  onRestore?: () => void;
+  onDelete?: () => void;
 }
 
 export function NoteDetail({
@@ -25,6 +30,9 @@ export function NoteDetail({
   onCancel,
   onDraftChange,
   onTagClick,
+  onArchive,
+  onRestore,
+  onDelete,
 }: NoteDetailProps) {
   const displayNote = isEditing && editDraft ? editDraft : note;
 
@@ -93,6 +101,18 @@ export function NoteDetail({
           <Button variant="ghost" size="md" onClick={onCancel}>
             Cancel
           </Button>
+        </div>
+      )}
+
+      {/* Shown only on tablet/mobile via CSS — actions panel hidden in those breakpoints */}
+      {!isEditing && note && (onArchive || onRestore || onDelete) && (
+        <div className={styles.inlineActions}>
+          <NoteActions
+            isArchived={note.isArchived}
+            onArchive={onArchive ?? (() => {})}
+            onRestore={onRestore ?? (() => {})}
+            onDelete={onDelete ?? (() => {})}
+          />
         </div>
       )}
     </article>

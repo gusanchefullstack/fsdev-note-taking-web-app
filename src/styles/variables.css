@@ -63,10 +63,12 @@
   --radius-pill: 9999px;
 
   /* ── Layout ─────────────────────────────────────────────── */
-  --sidebar-w:      240px;
-  --notes-list-w:   290px;
-  --note-actions-w: 210px;
-  --header-h:       72px;
+  --sidebar-w:        240px;
+  --sidebar-w-tablet: 56px;
+  --notes-list-w:     290px;
+  --notes-list-w-tab: 240px;
+  --note-actions-w:   210px;
+  --header-h:         72px;
 
   /* ── Transitions ────────────────────────────────────────── */
   --transition-fast: 120ms ease;

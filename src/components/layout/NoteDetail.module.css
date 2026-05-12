@@ -40,3 +40,24 @@
   border-top: 1px solid var(--clr-border);
   flex-shrink: 0;
 }
+
+/* Actions inline block — hidden on desktop, visible on tablet/mobile */
+.inlineActions {
+  display: none;
+  border-top: 1px solid var(--clr-border);
+  margin-top: var(--sp-4);
+}
+
+@media (max-width: 1024px) {
+  .inlineActions {
+    display: block;
+  }
+
+  /* Override the NoteActions panel border/padding when inline */
+  .inlineActions > aside {
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-left: none;
+    padding: var(--sp-4) 0 0;
+  }
+}

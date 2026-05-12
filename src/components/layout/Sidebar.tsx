@@ -39,7 +39,7 @@ export function Sidebar({
             aria-current={isAll ? 'page' : undefined}
           >
             <Icon name="home" size={18} />
-            All Notes
+            <span className={styles.navLabel}>All Notes</span>
             {isAll && <Icon name="chevron-right" size={16} className={styles.navChevron} />}
           </button>
         </li>
@@ -51,7 +51,7 @@ export function Sidebar({
             aria-current={isArchived ? 'page' : undefined}
           >
             <Icon name="archive" size={18} />
-            Archived Notes
+            <span className={styles.navLabel}>Archived Notes</span>
             {isArchived && (
               <Icon name="chevron-right" size={16} className={styles.navChevron} />
             )}
@@ -64,7 +64,7 @@ export function Sidebar({
       <div className={styles.tagsSection}>
         <p className={styles.tagsHeading}>
           <Icon name="tag" size={14} />
-          Tags
+          <span className={styles.navLabel}>Tags</span>
         </p>
         <ul className={styles.tagsList} role="list">
           {allTags.map((tag) => {
@@ -76,9 +76,10 @@ export function Sidebar({
                   className={`${styles.navItem} ${isActive ? styles.navItemActive : ''}`}
                   onClick={() => onSelectTag(tag)}
                   aria-current={isActive ? 'page' : undefined}
+                  aria-label={tag}
                 >
                   <Icon name="tag" size={16} />
-                  {tag}
+                  <span className={styles.navLabel}>{tag}</span>
                   {isActive && (
                     <Icon name="chevron-right" size={16} className={styles.navChevron} />
                   )}
@@ -97,9 +98,10 @@ export function Sidebar({
               type="button"
               className={styles.navItem}
               onClick={onLogout}
+              aria-label="Logout"
             >
               <Icon name="logout" size={18} />
-              Logout
+              <span className={styles.navLabel}>Logout</span>
             </button>
           </div>
         </>

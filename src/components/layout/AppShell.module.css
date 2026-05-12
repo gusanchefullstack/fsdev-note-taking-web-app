@@ -49,3 +49,43 @@
   display: flex;
   overflow: hidden;
 }
+
+/* ── Tablet (≤ 1024px) ──────────────────────────────────── */
+@media (max-width: 1024px) {
+  .shell {
+    grid-template-columns: var(--sidebar-w-tablet) 1fr;
+  }
+
+  .contentBody {
+    grid-template-columns: var(--notes-list-w-tab) 1fr;
+  }
+
+  /* Hide the actions panel column on tablet — actions move into NoteDetail */
+  .contentBody > :last-child {
+    display: none;
+  }
+}
+
+/* ── Mobile (≤ 640px) ───────────────────────────────────── */
+@media (max-width: 640px) {
+  .shell {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr var(--header-h);
+  }
+
+  .sidebar {
+    /* On mobile sidebar moves to a bottom nav bar */
+    grid-row: 2;
+    border-right: none;
+    border-top: 1px solid var(--clr-sidebar-border);
+    overflow: visible;
+  }
+
+  .main {
+    grid-row: 1;
+  }
+
+  .contentBody {
+    grid-template-columns: 1fr;
+  }
+}

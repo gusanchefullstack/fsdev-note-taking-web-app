@@ -192,6 +192,9 @@ function NotesApp() {
             onCancel={handleCancel}
             onDraftChange={setEditDraft}
             onTagClick={handleTagClick}
+            onArchive={selectedNote ? handleArchive : undefined}
+            onRestore={selectedNote ? handleRestore : undefined}
+            onDelete={selectedNote ? handleDelete : undefined}
           />
         ) : (
           <EmptyState
