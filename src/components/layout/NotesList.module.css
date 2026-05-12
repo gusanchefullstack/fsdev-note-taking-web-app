@@ -23,3 +23,13 @@
   color: var(--clr-text-sub);
   font-size: var(--text-base);
 }
+
+@media (max-width: 640px) {
+  .panel {
+    border-right: none;
+  }
+
+  .createBtn {
+    margin: var(--sp-3) var(--sp-4);
+  }
+}

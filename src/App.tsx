@@ -29,6 +29,7 @@ function NotesApp() {
   const [activeView, setActiveView] = useState<ActiveView>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [showSettings, setShowSettings] = useState(false);
+  const [mobileView, setMobileView] = useState<'list' | 'detail'>('list');
 
   /* ── Derived state ────────────────────────────────────── */
   const selectedNote = notes.find((n) => n.id === selectedNoteId) ?? null;
@@ -76,6 +77,7 @@ function NotesApp() {
     setIsEditing(false);
     setIsCreating(false);
     setEditDraft(null);
+    setMobileView('detail');
   };
 
   const handleCreateNote = () => {
@@ -83,6 +85,7 @@ function NotesApp() {
     setIsEditing(true);
     setSelectedNoteId(null);
     setEditDraft({ title: '', tags: [], content: '' });
+    setMobileView('detail');
   };
 
   const handleEditStart = () => {
@@ -114,7 +117,15 @@ function NotesApp() {
     setEditDraft(null);
     if (isCreating) {
       setSelectedNoteId(filteredNotes[0]?.id ?? null);
+      setMobileView('list');
     }
+  };
+
+  const handleBackToList = () => {
+    setMobileView('list');
+    setIsEditing(false);
+    setIsCreating(false);
+    setEditDraft(null);
   };
 
   const handleArchive = () => {
@@ -162,6 +173,7 @@ function NotesApp() {
       onSearchChange={setSearchQuery}
       showSettings={showSettings}
       settingsPanel={<SettingsPanel />}
+      mobileView={mobileView}
       onSettingsClick={() => setShowSettings((v) => !v)}
       sidebar={
         <Sidebar
@@ -195,6 +207,7 @@ function NotesApp() {
             onArchive={selectedNote ? handleArchive : undefined}
             onRestore={selectedNote ? handleRestore : undefined}
             onDelete={selectedNote ? handleDelete : undefined}
+            onBack={handleBackToList}
           />
         ) : (
           <EmptyState

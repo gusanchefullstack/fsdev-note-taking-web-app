@@ -11,6 +11,7 @@ interface AppShellProps {
   noteActions: ReactNode;
   settingsPanel?: ReactNode;
   showSettings?: boolean;
+  mobileView?: 'list' | 'detail';
   viewTitle: string;
   searchQuery: string;
   onSearchChange: (q: string) => void;
@@ -24,13 +25,14 @@ export function AppShell({
   noteActions,
   settingsPanel,
   showSettings = false,
+  mobileView = 'list',
   viewTitle,
   searchQuery,
   onSearchChange,
   onSettingsClick,
 }: AppShellProps) {
   return (
-    <div className={styles.shell}>
+    <div className={styles.shell} data-mobile-view={mobileView}>
       <aside className={styles.sidebar}>{sidebar}</aside>
 
       <main className={styles.main}>

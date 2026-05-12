@@ -1,5 +1,6 @@
 import type { Note, EditDraft } from '../../types';
 import { Button } from '../ui/Button';
+import { Icon } from '../ui/Icon';
 import { NoteMetaBar } from '../notes/NoteMetaBar';
 import { NoteViewer } from '../notes/NoteViewer';
 import { NoteEditor } from '../notes/NoteEditor';
@@ -19,6 +20,8 @@ interface NoteDetailProps {
   onArchive?: () => void;
   onRestore?: () => void;
   onDelete?: () => void;
+  /* mobile: back to list */
+  onBack?: () => void;
 }
 
 export function NoteDetail({
@@ -33,6 +36,7 @@ export function NoteDetail({
   onArchive,
   onRestore,
   onDelete,
+  onBack,
 }: NoteDetailProps) {
   const displayNote = isEditing && editDraft ? editDraft : note;
 
@@ -45,6 +49,12 @@ export function NoteDetail({
 
   return (
     <article className={styles.panel} aria-label="Note content">
+      {onBack && (
+        <button type="button" className={styles.backBtn} onClick={onBack} aria-label="Back to notes list">
+          <Icon name="arrow-left" size={16} />
+          <span>Go Back</span>
+        </button>
+      )}
       {isEditing ? (
         <input
           type="text"

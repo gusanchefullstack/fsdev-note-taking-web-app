@@ -5,6 +5,36 @@
   padding: var(--sp-5) var(--sp-6);
 }
 
+/* Shown only on mobile via CSS — hidden on larger screens */
+.backBtn {
+  display: none;
+  align-items: center;
+  gap: var(--sp-2);
+  background: transparent;
+  border: none;
+  color: var(--clr-text-sub);
+  font-size: var(--text-sm);
+  font-family: inherit;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: var(--sp-4);
+  width: fit-content;
+}
+
+.backBtn:hover {
+  color: var(--clr-text);
+}
+
+@media (max-width: 640px) {
+  .panel {
+    padding: var(--sp-4);
+  }
+
+  .backBtn {
+    display: flex;
+  }
+}
+
 .titleInput {
   width: 100%;
   border: none;
