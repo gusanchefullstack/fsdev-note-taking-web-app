@@ -1,0 +1,21 @@
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px var(--sp-2);
+  border-radius: var(--radius-xs);
+  background-color: var(--clr-tag-bg);
+  color: var(--clr-tag-text);
+  font-size: var(--text-xs);
+  font-weight: var(--fw-medium);
+  line-height: 1.6;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.clickable {
+  cursor: pointer;
+  transition: opacity var(--transition-fast);
+}
+.clickable:hover {
+  opacity: 0.75;
+}

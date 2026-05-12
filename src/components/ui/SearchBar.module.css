@@ -1,0 +1,39 @@
+.wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1;
+  max-width: 360px;
+}
+
+.icon {
+  position: absolute;
+  left: var(--sp-3);
+  color: var(--clr-text-sub);
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+.input {
+  width: 100%;
+  padding: 0.5625rem var(--sp-3) 0.5625rem calc(var(--sp-3) + 20px + var(--sp-2));
+  border: 1px solid var(--clr-input-border);
+  border-radius: var(--radius-md);
+  background-color: var(--clr-input-bg);
+  color: var(--clr-text);
+  font-size: var(--text-base);
+  transition: border-color var(--transition-fast);
+}
+
+.input::placeholder {
+  color: var(--clr-text-placeholder);
+}
+
+.input:hover {
+  border-color: var(--clr-input-hover);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--clr-border-focus);
+}

@@ -1,0 +1,46 @@
+.shell {
+  display: grid;
+  grid-template-columns: var(--sidebar-w) 1fr;
+  grid-template-rows: 100vh;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.sidebar {
+  border-right: 1px solid var(--clr-sidebar-border);
+  background-color: var(--clr-sidebar-bg);
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  display: grid;
+  grid-template-rows: var(--header-h) 1fr;
+  overflow: hidden;
+  background-color: var(--clr-bg);
+}
+
+.contentHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: 0 var(--sp-5);
+  border-bottom: 1px solid var(--clr-border);
+  height: var(--header-h);
+  flex-shrink: 0;
+}
+
+.viewTitle {
+  font-size: var(--text-xl);
+  font-weight: var(--fw-bold);
+  color: var(--clr-text);
+  margin-right: auto;
+}
+
+.contentBody {
+  display: grid;
+  grid-template-columns: var(--notes-list-w) 1fr var(--note-actions-w);
+  overflow: hidden;
+}
