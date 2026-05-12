@@ -1,0 +1,58 @@
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-top: 1px solid var(--clr-border);
+  border-bottom: 1px solid var(--clr-border);
+  padding: var(--sp-2) 0;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-2) 0;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--text-base);
+  color: var(--clr-text-sub);
+  white-space: nowrap;
+}
+
+.value {
+  font-size: var(--text-base);
+  color: var(--clr-text);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-1);
+}
+
+/* Edit mode: tag input */
+.tagInputWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-1);
+  align-items: center;
+}
+
+.tagInput {
+  border: none;
+  background: transparent;
+  color: var(--clr-text);
+  font-size: var(--text-base);
+  outline: none;
+  min-width: 80px;
+  flex: 1;
+}
+
+.tagInput::placeholder {
+  color: var(--clr-text-placeholder);
+}

@@ -1,4 +1,4 @@
-import LogoImage from '../../assets/images/logo.svg?react';
+import LogoImage from '../../../assets/images/logo.svg?react';
 import type { ActiveView } from '../../types';
 import { Icon } from '../ui/Icon';
 import styles from './Sidebar.module.css';

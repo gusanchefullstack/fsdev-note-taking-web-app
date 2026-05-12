@@ -1,0 +1,35 @@
+.editor {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--sp-5) 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.contentArea {
+  flex: 1;
+  width: 100%;
+  min-height: 200px;
+  resize: none;
+  border: none;
+  background: transparent;
+  color: var(--clr-text);
+  font-size: var(--text-md);
+  font-family: var(--font-body);
+  line-height: var(--lh-normal);
+  outline: none;
+  padding: 0;
+}
+
+.contentArea::placeholder {
+  color: var(--clr-text-placeholder);
+}
+
+.hint {
+  font-size: var(--text-xs);
+  color: var(--clr-text-placeholder);
+  margin-top: var(--sp-3);
+  padding-top: var(--sp-3);
+  border-top: 1px solid var(--clr-border);
+}

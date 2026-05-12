@@ -1,0 +1,38 @@
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  padding: var(--sp-5) var(--sp-4);
+  border-left: 1px solid var(--clr-border);
+  overflow-y: auto;
+}
+
+.actionBtn {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-3) var(--sp-4);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--clr-btn-ghost-border);
+  background: transparent;
+  color: var(--clr-text);
+  font-size: var(--text-base);
+  font-weight: var(--fw-medium);
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.actionBtn:hover {
+  background-color: var(--clr-btn-ghost-hover);
+}
+
+.dangerBtn {
+  color: var(--clr-btn-danger-text);
+}
+
+.dangerBtn:hover {
+  background-color: var(--clr-btn-danger-hover);
+  border-color: var(--clr-btn-danger-text);
+}
