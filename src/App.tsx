@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import type { Note, ActiveView, EditDraft } from './types';
-import { initialNotes } from './data';
+import type { ActiveView, EditDraft } from './types';
+import { useNotes } from './context/NotesContext';
 import { AppShell } from './components/layout/AppShell';
 import { Sidebar } from './components/layout/Sidebar';
 import { NotesList } from './components/layout/NotesList';
@@ -9,9 +9,10 @@ import { NoteActions } from './components/notes/NoteActions';
 import { EmptyState } from './components/notes/EmptyState';
 
 export default function App() {
-  const [notes, setNotes] = useState<Note[]>(initialNotes);
+  const { notes, createNote, updateNote, archiveNote, restoreNote, deleteNote } = useNotes();
+
   const [selectedNoteId, setSelectedNoteId] = useState<string | null>(
-    initialNotes[0]?.id ?? null,
+    notes[0]?.id ?? null,
   );
   const [isEditing, setIsEditing] = useState(false);
   const [isCreating, setIsCreating] = useState(false);
@@ -86,24 +87,10 @@ export default function App() {
 
   const handleSave = (draft: EditDraft) => {
     if (isCreating) {
-      const newNote: Note = {
-        id: `note-${Date.now()}`,
-        title: draft.title || 'Untitled Note',
-        tags: draft.tags,
-        content: draft.content,
-        lastEdited: new Date().toISOString(),
-        isArchived: false,
-      };
-      setNotes((prev) => [newNote, ...prev]);
+      const newNote = createNote(draft);
       setSelectedNoteId(newNote.id);
     } else if (selectedNote) {
-      setNotes((prev) =>
-        prev.map((n) =>
-          n.id === selectedNote.id
-            ? { ...n, ...draft, lastEdited: new Date().toISOString() }
-            : n,
-        ),
-      );
+      updateNote(selectedNote.id, draft);
     }
     setIsEditing(false);
     setIsCreating(false);
@@ -121,13 +108,7 @@ export default function App() {
 
   const handleArchive = () => {
     if (!selectedNote) return;
-    setNotes((prev) =>
-      prev.map((n) =>
-        n.id === selectedNote.id
-          ? { ...n, isArchived: true, lastEdited: new Date().toISOString() }
-          : n,
-      ),
-    );
+    archiveNote(selectedNote.id);
     setSelectedNoteId(
       filteredNotes.find((n) => n.id !== selectedNote.id)?.id ?? null,
     );
@@ -135,19 +116,13 @@ export default function App() {
 
   const handleRestore = () => {
     if (!selectedNote) return;
-    setNotes((prev) =>
-      prev.map((n) =>
-        n.id === selectedNote.id
-          ? { ...n, isArchived: false, lastEdited: new Date().toISOString() }
-          : n,
-      ),
-    );
+    restoreNote(selectedNote.id);
   };
 
   const handleDelete = () => {
     if (!selectedNote) return;
     const nextId = filteredNotes.find((n) => n.id !== selectedNote.id)?.id ?? null;
-    setNotes((prev) => prev.filter((n) => n.id !== selectedNote.id));
+    deleteNote(selectedNote.id);
     setSelectedNoteId(nextId);
   };
 
@@ -174,7 +149,7 @@ export default function App() {
       searchQuery={searchQuery}
       onSearchChange={setSearchQuery}
       onSettingsClick={() => {
-        /* settings page — coming in a later commit */
+        /* settings page — commit 9 */
       }}
       sidebar={
         <Sidebar
