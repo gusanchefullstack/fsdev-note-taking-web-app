@@ -1,0 +1,28 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: var(--sp-8);
+  text-align: center;
+  color: var(--clr-text-sub);
+  gap: var(--sp-3);
+}
+
+.icon {
+  color: var(--clr-text-placeholder);
+  opacity: 0.6;
+}
+
+.title {
+  font-size: var(--text-md);
+  font-weight: var(--fw-semibold);
+  color: var(--clr-text);
+}
+
+.message {
+  font-size: var(--text-base);
+  max-width: 280px;
+  line-height: var(--lh-normal);
+}
