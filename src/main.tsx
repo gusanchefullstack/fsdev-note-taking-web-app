@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
 import { FontProvider } from './context/FontContext';
 import { NotesProvider } from './context/NotesContext';
+import { AuthProvider } from './context/AuthContext';
 import App from './App';
 import './styles/variables.css';
 import './styles/global.css';
@@ -13,9 +14,11 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <BrowserRouter>
       <ThemeProvider>
         <FontProvider>
-          <NotesProvider>
-            <App />
-          </NotesProvider>
+          <AuthProvider>
+            <NotesProvider>
+              <App />
+            </NotesProvider>
+          </AuthProvider>
         </FontProvider>
       </ThemeProvider>
     </BrowserRouter>

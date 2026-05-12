@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import type { ActiveView, EditDraft } from './types';
 import { useNotes } from './context/NotesContext';
+import { useAuth } from './context/AuthContext';
 import { AppShell } from './components/layout/AppShell';
 import { Sidebar } from './components/layout/Sidebar';
 import { NotesList } from './components/layout/NotesList';
@@ -8,9 +10,15 @@ import { NoteDetail } from './components/layout/NoteDetail';
 import { NoteActions } from './components/notes/NoteActions';
 import { EmptyState } from './components/notes/EmptyState';
 import { SettingsPanel } from './components/settings/SettingsPanel';
+import { LoginPage } from './components/auth/LoginPage';
+import { SignupPage } from './components/auth/SignupPage';
+import { ForgotPasswordPage } from './components/auth/ForgotPasswordPage';
+import { ResetPasswordPage } from './components/auth/ResetPasswordPage';
+import { RequireAuth } from './components/auth/RequireAuth';
 
-export default function App() {
+function NotesApp() {
   const { notes, createNote, updateNote, archiveNote, restoreNote, deleteNote } = useNotes();
+  const { logout } = useAuth();
 
   const [selectedNoteId, setSelectedNoteId] = useState<string | null>(
     notes[0]?.id ?? null,
@@ -52,8 +60,9 @@ export default function App() {
   const allTags = [...new Set(notes.flatMap((n) => n.tags))].sort();
 
   /* ── View title ───────────────────────────────────────── */
-  const viewTitle =
-    activeView === 'all'
+  const viewTitle = showSettings
+    ? 'Settings'
+    : activeView === 'all'
       ? 'All Notes'
       : activeView === 'archived'
         ? 'Archived Notes'
@@ -140,6 +149,7 @@ export default function App() {
     setIsCreating(false);
     setEditDraft(null);
     setSearchQuery('');
+    setShowSettings(false);
   };
 
   /* ── Render ───────────────────────────────────────────── */
@@ -160,6 +170,7 @@ export default function App() {
           onSelectAllNotes={() => handleSelectView('all')}
           onSelectArchived={() => handleSelectView('archived')}
           onSelectTag={(tag) => handleSelectView({ tag })}
+          onLogout={logout}
         />
       }
       notesList={
@@ -202,5 +213,25 @@ export default function App() {
         )
       }
     />
+  );
+}
+
+export default function App() {
+  return (
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <RequireAuth>
+            <NotesApp />
+          </RequireAuth>
+        }
+      />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/signup" element={<SignupPage />} />
+      <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+      <Route path="/reset-password" element={<ResetPasswordPage />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
   );
 }

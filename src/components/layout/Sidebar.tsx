@@ -9,6 +9,7 @@ interface SidebarProps {
   onSelectAllNotes: () => void;
   onSelectArchived: () => void;
   onSelectTag: (tag: string) => void;
+  onLogout?: () => void;
 }
 
 export function Sidebar({
@@ -17,6 +18,7 @@ export function Sidebar({
   onSelectAllNotes,
   onSelectArchived,
   onSelectTag,
+  onLogout,
 }: SidebarProps) {
   const isAll = activeView === 'all';
   const isArchived = activeView === 'archived';
@@ -86,6 +88,22 @@ export function Sidebar({
           })}
         </ul>
       </div>
+
+      {onLogout && (
+        <>
+          <div className={styles.divider} role="separator" />
+          <div className={styles.logoutArea}>
+            <button
+              type="button"
+              className={styles.navItem}
+              onClick={onLogout}
+            >
+              <Icon name="logout" size={18} />
+              Logout
+            </button>
+          </div>
+        </>
+      )}
     </nav>
   );
 }
