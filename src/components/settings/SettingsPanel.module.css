@@ -1,0 +1,86 @@
+.panel {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--sp-6);
+  border-left: 1px solid var(--clr-border);
+}
+
+.section {
+  margin-bottom: var(--sp-8);
+}
+
+.sectionTitle {
+  font-size: var(--text-base);
+  font-weight: var(--fw-semibold);
+  color: var(--clr-text-sub);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 0 0 var(--sp-4);
+}
+
+.optionList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.optionBtn {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-3) var(--sp-4);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--clr-border);
+  background: transparent;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast);
+  color: var(--clr-text);
+}
+
+.optionBtn:hover {
+  background-color: var(--clr-btn-ghost-hover);
+}
+
+.optionBtn.active {
+  background-color: var(--clr-nav-active-bg);
+  border-color: var(--clr-blue-500);
+}
+
+.optionIcon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background: var(--clr-neutral-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+:root[data-theme='dark'] .optionIcon {
+  background: var(--clr-neutral-700);
+}
+
+.optionLabel {
+  font-size: var(--text-base);
+  font-weight: var(--fw-medium);
+  color: var(--clr-text);
+}
+
+.optionDesc {
+  font-size: var(--text-sm);
+  color: var(--clr-text-sub);
+  margin-top: 2px;
+}
+
+.optionText {
+  flex: 1;
+}
+
+.checkmark {
+  margin-left: auto;
+  color: var(--clr-blue-500);
+  font-size: var(--text-md);
+}

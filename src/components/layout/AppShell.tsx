@@ -9,6 +9,8 @@ interface AppShellProps {
   notesList: ReactNode;
   noteDetail: ReactNode;
   noteActions: ReactNode;
+  settingsPanel?: ReactNode;
+  showSettings?: boolean;
   viewTitle: string;
   searchQuery: string;
   onSearchChange: (q: string) => void;
@@ -20,6 +22,8 @@ export function AppShell({
   notesList,
   noteDetail,
   noteActions,
+  settingsPanel,
+  showSettings = false,
   viewTitle,
   searchQuery,
   onSearchChange,
@@ -32,21 +36,30 @@ export function AppShell({
       <main className={styles.main}>
         <header className={styles.contentHeader}>
           <h1 className={styles.viewTitle}>{viewTitle}</h1>
-          <SearchBar value={searchQuery} onChange={onSearchChange} />
+          {!showSettings && (
+            <SearchBar value={searchQuery} onChange={onSearchChange} />
+          )}
           <Button
             variant="icon"
             size="sm"
-            aria-label="Open settings"
+            aria-label={showSettings ? 'Close settings' : 'Open settings'}
+            aria-pressed={showSettings}
             onClick={onSettingsClick}
           >
             <Icon name="settings" size={20} />
           </Button>
         </header>
 
-        <div className={styles.contentBody}>
-          {notesList}
-          {noteDetail}
-          {noteActions}
+        <div className={showSettings ? styles.contentBodyFull : styles.contentBody}>
+          {showSettings ? (
+            settingsPanel
+          ) : (
+            <>
+              {notesList}
+              {noteDetail}
+              {noteActions}
+            </>
+          )}
         </div>
       </main>
     </div>

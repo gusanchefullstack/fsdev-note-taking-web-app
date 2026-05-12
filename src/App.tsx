@@ -7,6 +7,7 @@ import { NotesList } from './components/layout/NotesList';
 import { NoteDetail } from './components/layout/NoteDetail';
 import { NoteActions } from './components/notes/NoteActions';
 import { EmptyState } from './components/notes/EmptyState';
+import { SettingsPanel } from './components/settings/SettingsPanel';
 
 export default function App() {
   const { notes, createNote, updateNote, archiveNote, restoreNote, deleteNote } = useNotes();
@@ -19,6 +20,7 @@ export default function App() {
   const [editDraft, setEditDraft] = useState<EditDraft | null>(null);
   const [activeView, setActiveView] = useState<ActiveView>('all');
   const [searchQuery, setSearchQuery] = useState('');
+  const [showSettings, setShowSettings] = useState(false);
 
   /* ── Derived state ────────────────────────────────────── */
   const selectedNote = notes.find((n) => n.id === selectedNoteId) ?? null;
@@ -148,9 +150,9 @@ export default function App() {
       viewTitle={viewTitle}
       searchQuery={searchQuery}
       onSearchChange={setSearchQuery}
-      onSettingsClick={() => {
-        /* settings page — commit 9 */
-      }}
+      showSettings={showSettings}
+      settingsPanel={<SettingsPanel />}
+      onSettingsClick={() => setShowSettings((v) => !v)}
       sidebar={
         <Sidebar
           activeView={activeView}

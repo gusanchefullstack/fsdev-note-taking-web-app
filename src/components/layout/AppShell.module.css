@@ -44,3 +44,8 @@
   grid-template-columns: var(--notes-list-w) 1fr var(--note-actions-w);
   overflow: hidden;
 }
+
+.contentBodyFull {
+  display: flex;
+  overflow: hidden;
+}
