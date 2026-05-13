@@ -12,7 +12,7 @@ export function NoteViewer({ content }: NoteViewerProps) {
       {content ? (
         <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
       ) : (
-        <p style={{ color: 'var(--clr-text-placeholder)' }}>
+        <p className={styles.placeholder}>
           Start writing your note…
         </p>
       )}

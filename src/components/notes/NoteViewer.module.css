@@ -88,3 +88,7 @@
   color: var(--clr-blue-500);
   text-decoration: underline;
 }
+
+.placeholder {
+  color: var(--clr-text-placeholder);
+}
