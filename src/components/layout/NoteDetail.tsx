@@ -61,7 +61,7 @@ export function NoteDetail({
           className={styles.titleInput}
           value={title}
           onChange={(e) =>
-            onDraftChange({ ...editDraft!, title: e.target.value })
+            editDraft && onDraftChange({ ...editDraft, title: e.target.value })
           }
           placeholder="Note title…"
           aria-label="Note title"
@@ -85,7 +85,7 @@ export function NoteDetail({
         lastEdited={lastEdited}
         isEditing={isEditing}
         onTagsChange={(newTags) =>
-          isEditing && onDraftChange({ ...editDraft!, tags: newTags })
+          isEditing && editDraft && onDraftChange({ ...editDraft, tags: newTags })
         }
         onTagClick={onTagClick}
       />
@@ -93,7 +93,7 @@ export function NoteDetail({
       {isEditing ? (
         <NoteEditor
           content={content}
-          onChange={(c) => onDraftChange({ ...editDraft!, content: c })}
+          onChange={(c) => editDraft && onDraftChange({ ...editDraft, content: c })}
         />
       ) : (
         <NoteViewer content={content} />

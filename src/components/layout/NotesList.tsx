@@ -20,7 +20,7 @@ export function NotesList({
 }: NotesListProps) {
   const listRef = useRef<HTMLOListElement>(null);
 
-  const handleKeyDown = (e: KeyboardEvent<HTMLOListElement>, index: number) => {
+  const handleKeyDown = (e: KeyboardEvent<HTMLButtonElement>, index: number) => {
     const items = listRef.current?.querySelectorAll<HTMLButtonElement>('button[data-note-btn]');
     if (!items) return;
 

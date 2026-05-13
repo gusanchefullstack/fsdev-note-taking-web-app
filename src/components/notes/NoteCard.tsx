@@ -7,7 +7,7 @@ interface NoteCardProps {
   note: Note;
   isSelected: boolean;
   onClick: () => void;
-  onKeyDown?: (e: KeyboardEvent<HTMLOListElement>) => void;
+  onKeyDown?: (e: KeyboardEvent<HTMLButtonElement>) => void;
 }
 
 function formatDate(iso: string): string {
@@ -25,7 +25,7 @@ export function NoteCard({ note, isSelected, onClick, onKeyDown }: NoteCardProps
       data-note-btn
       className={`${styles.card} ${isSelected ? styles.cardSelected : ''}`}
       onClick={onClick}
-      onKeyDown={onKeyDown as never}
+      onKeyDown={onKeyDown}
       aria-pressed={isSelected}
       aria-label={`Note: ${note.title || 'Untitled Note'}`}
     >

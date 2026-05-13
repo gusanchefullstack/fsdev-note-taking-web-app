@@ -33,6 +33,8 @@ function reducer(state: Note[], action: Action): Note[] {
       return state.map((n) => (n.id === action.id ? { ...n, ...action.patch } : n));
     case 'DELETE':
       return state.filter((n) => n.id !== action.id);
+    default:
+      return state;
   }
 }
 
