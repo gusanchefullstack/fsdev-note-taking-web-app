@@ -53,12 +53,22 @@
   color: var(--clr-text-placeholder);
 }
 
+.titleHeading {
+  margin-bottom: var(--sp-4);
+}
+
 .title {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: transparent;
+  padding: 0;
   font-size: var(--text-2xl);
   font-weight: var(--fw-bold);
+  font-family: var(--font-body);
   color: var(--clr-text);
   line-height: var(--lh-tight);
-  margin-bottom: var(--sp-4);
   cursor: text;
 }
 

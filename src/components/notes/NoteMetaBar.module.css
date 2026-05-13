@@ -56,3 +56,7 @@
 .tagInput::placeholder {
   color: var(--clr-text-placeholder);
 }
+
+.noTags {
+  color: var(--clr-text-placeholder);
+}

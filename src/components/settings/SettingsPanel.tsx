@@ -3,6 +3,18 @@ import { useFont } from '../../context/FontContext';
 import type { Theme, FontFamily } from '../../types';
 import styles from './SettingsPanel.module.css';
 
+function fontClass(value: FontFamily): string {
+  if (value === 'sans-serif') return styles.fontSansSerif;
+  if (value === 'serif') return styles.fontSerif;
+  return styles.fontMonospace;
+}
+
+function fontIconClass(value: FontFamily): string {
+  if (value === 'sans-serif') return styles.fontSansSerifIcon;
+  if (value === 'serif') return styles.fontSerifIcon;
+  return styles.fontMonospaceIcon;
+}
+
 const THEME_OPTIONS: { value: Theme; label: string; desc: string; emoji: string }[] = [
   { value: 'light', label: 'Light Mode', desc: 'Pick a clean and classic look', emoji: '☀️' },
   { value: 'dark', label: 'Dark Mode', desc: 'Select a sleek and modern appearance', emoji: '🌙' },
@@ -51,15 +63,13 @@ export function SettingsPanel() {
             <li key={opt.value}>
               <button
                 type="button"
-                className={`${styles.optionBtn}${fontFamily === opt.value ? ` ${styles.active}` : ''}`}
+                className={`${styles.optionBtn} ${fontClass(opt.value)}${fontFamily === opt.value ? ` ${styles.active}` : ''}`}
                 onClick={() => setFontFamily(opt.value)}
                 aria-pressed={fontFamily === opt.value}
-                style={{ fontFamily: `var(--font-${opt.value})` }}
               >
                 <span
-                  className={styles.optionIcon}
+                  className={`${styles.optionIcon} ${fontIconClass(opt.value)}`}
                   aria-hidden="true"
-                  style={{ fontFamily: `var(--font-${opt.value})`, fontWeight: 700 }}
                 >
                   {opt.sample}
                 </span>

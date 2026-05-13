@@ -86,3 +86,25 @@
   color: var(--clr-blue-500);
   font-size: var(--text-md);
 }
+
+/* Font preview classes — applied to font option buttons and their icons */
+.fontSansSerif,
+.fontSansSerifIcon {
+  font-family: var(--font-sans);
+}
+
+.fontSerif,
+.fontSerifIcon {
+  font-family: var(--font-serif);
+}
+
+.fontMonospace,
+.fontMonospaceIcon {
+  font-family: var(--font-mono);
+}
+
+.fontSansSerifIcon,
+.fontSerifIcon,
+.fontMonospaceIcon {
+  font-weight: 700;
+}

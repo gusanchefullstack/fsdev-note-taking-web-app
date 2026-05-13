@@ -88,7 +88,7 @@ export function NoteMetaBar({
                   />
                 ))
               ) : (
-                <span style={{ color: 'var(--clr-text-placeholder)' }}>No tags</span>
+                <span className={styles.noTags}>No tags</span>
               )}
             </span>
           )}

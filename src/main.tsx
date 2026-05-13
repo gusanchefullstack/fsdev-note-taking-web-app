@@ -9,7 +9,10 @@ import App from './App';
 import './styles/variables.css';
 import './styles/global.css';
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+const rootEl = document.getElementById('root');
+if (!rootEl) throw new Error('Root element not found');
+
+ReactDOM.createRoot(rootEl).render(
   <React.StrictMode>
     <BrowserRouter>
       <ThemeProvider>

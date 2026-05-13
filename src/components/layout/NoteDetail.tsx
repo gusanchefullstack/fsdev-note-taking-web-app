@@ -68,15 +68,15 @@ export function NoteDetail({
           autoFocus
         />
       ) : (
-        <h2
-          className={styles.title}
-          onClick={onEditStart}
-          title="Click to edit"
-          role="button"
-          tabIndex={0}
-          onKeyDown={(e) => e.key === 'Enter' && onEditStart()}
-        >
-          {title || 'Untitled Note'}
+        <h2 className={styles.titleHeading}>
+          <button
+            type="button"
+            className={styles.title}
+            onClick={onEditStart}
+            title="Click to edit"
+          >
+            {title || 'Untitled Note'}
+          </button>
         </h2>
       )}
 

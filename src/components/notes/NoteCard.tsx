@@ -20,31 +20,29 @@ function formatDate(iso: string): string {
 
 export function NoteCard({ note, isSelected, onClick, onKeyDown }: NoteCardProps) {
   return (
-    <article>
-      <button
-        type="button"
-        data-note-btn
-        className={`${styles.card} ${isSelected ? styles.cardSelected : ''}`}
-        onClick={onClick}
-        onKeyDown={onKeyDown as never}
-        aria-pressed={isSelected}
-        aria-label={`Note: ${note.title || 'Untitled Note'}`}
-      >
-        <span className={styles.title}>{note.title || 'Untitled Note'}</span>
+    <button
+      type="button"
+      data-note-btn
+      className={`${styles.card} ${isSelected ? styles.cardSelected : ''}`}
+      onClick={onClick}
+      onKeyDown={onKeyDown as never}
+      aria-pressed={isSelected}
+      aria-label={`Note: ${note.title || 'Untitled Note'}`}
+    >
+      <span className={styles.title}>{note.title || 'Untitled Note'}</span>
 
-        {note.tags.length > 0 && (
-          <span className={styles.tags}>
-            {note.tags.map((tag) => (
-              <Tag key={tag} label={tag} />
-            ))}
-          </span>
-        )}
+      {note.tags.length > 0 && (
+        <span className={styles.tags}>
+          {note.tags.map((tag) => (
+            <Tag key={tag} label={tag} />
+          ))}
+        </span>
+      )}
 
-        <div className={styles.separator} />
-        <time className={styles.date} dateTime={note.lastEdited}>
-          {formatDate(note.lastEdited)}
-        </time>
-      </button>
-    </article>
+      <div className={styles.separator} />
+      <time className={styles.date} dateTime={note.lastEdited}>
+        {formatDate(note.lastEdited)}
+      </time>
+    </button>
   );
 }

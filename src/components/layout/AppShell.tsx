@@ -35,7 +35,7 @@ export function AppShell({
 }: AppShellProps) {
   return (
     <div className={styles.shell} data-mobile-view={mobileView}>
-      <aside className={styles.sidebar}>{sidebar}</aside>
+      <aside className={styles.sidebar} aria-label="Sidebar navigation">{sidebar}</aside>
 
       {/* Live region: announces search result counts to screen readers */}
       <div aria-live="polite" aria-atomic="true" className={styles.srOnly}>
