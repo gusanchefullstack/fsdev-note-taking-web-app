@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { describe, it, expect, beforeEach } from 'vitest';
 
 /* ── inline the auth logic to test without React ── */
 function hashPassword(password: string): string {

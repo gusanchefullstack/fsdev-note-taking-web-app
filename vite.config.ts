@@ -11,10 +11,4 @@ export default defineConfig({
     }),
     react(),
   ],
-  test: {
-    globals: true,
-    environment: 'jsdom',
-    setupFiles: ['./src/test/setup.ts'],
-    css: false,
-  },
 });
