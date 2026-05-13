@@ -52,8 +52,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [GitHub Repository](https://github.com/gusanchefullstack/fsdev-note-taking-web-app)
+- Live Site URL: [fsdev-note-taking-web-app-dev.vercel.app](https://fsdev-note-taking-web-app-dev.vercel.app)
 
 ## My process
 
